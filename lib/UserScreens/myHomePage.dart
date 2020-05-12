@@ -42,108 +42,108 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Center(
-          child: Column(
-        children: <Widget>[
-          Flexible(
-            child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemCount: storeItems.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        var itemDetails = ItemDetails(
-                        itemImage:storeItems[index].itemImage,
-                        itemName: storeItems[index].itemName,
-                        itemPrice: storeItems[index].itemPrice,
-                        itemRating: storeItems[index].itemRating,
+            child: Column(
+          children: <Widget>[
+            Flexible(
+      child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2),
+          itemCount: storeItems.length,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  var itemDetails = ItemDetails(
+                  itemImage:storeItems[index].itemImage,
+                  itemName: storeItems[index].itemName,
+                  itemPrice: storeItems[index].itemPrice,
+                  itemRating: storeItems[index].itemRating,
 
-                      );
-                        return itemDetails;
-                      }
-                      )
-                      );
-                    },
-                  
-                  child: Card(
-                    child: Stack(
-                      alignment: FractionalOffset.topLeft,
+                );
+                  return itemDetails;
+                }
+                )
+                );
+              },
+            
+            child: Card(
+              child: Stack(
+                alignment: FractionalOffset.topLeft,
+                children: <Widget>[
+                  Stack(
+                    alignment: FractionalOffset.bottomCenter,
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.fitWidth,
+                                image: NetworkImage(
+                                    storeItems[index].itemImage)
+                                    )
+                                    ),
+                      ),
+                      Container(
+                        height: 35.0,
+                        color: Colors.black.withAlpha(100),
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  "${storeItems[index].itemName}",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                Text(
+                                  "N${storeItems[index].itemPrice}",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red),
+                                ),
+                              ],
+                            )),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                    height: 20.0,
+                    width: 60.0,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.only(topRight:Radius.circular(5.0),bottomRight: Radius.circular(5.0),),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Stack(
-                          alignment: FractionalOffset.bottomCenter,
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      fit: BoxFit.fitWidth,
-                                      image: NetworkImage(
-                                          storeItems[index].itemImage)
-                                          )
-                                          ),
-                            ),
-                            Container(
-                              height: 35.0,
-                              color: Colors.black.withAlpha(100),
-                              child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      Text(
-                                        "${storeItems[index].itemName}",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
-                                      ),
-                                      Text(
-                                        "N${storeItems[index].itemPrice}",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.red),
-                                      ),
-                                    ],
-                                  )),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                          height: 20.0,
-                          width: 60.0,
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.only(topRight:Radius.circular(5.0),bottomRight: Radius.circular(5.0),),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                            Icon(Icons.star,color: Colors.blue, size: 20,),
-                            Text("${storeItems[index].itemRating}",
-                            style: TextStyle(
-                              
-                              color: Colors.white,
-                            ),)
-                          ],
-                          ),
-                        ),
-                        IconButton(icon:Icon(Icons.favorite_border,color: Colors.black,), onPressed: null,)
-                          ],
-                        ),
+                      Icon(Icons.star,color: Colors.blue, size: 20,),
+                      Text("${storeItems[index].itemRating}",
+                      style: TextStyle(
                         
-                      ],
+                        color: Colors.white,
+                      ),)
+                    ],
                     ),
                   ),
-                  );
-                }),
-          ),
-        ],
-      )),
+                  IconButton(icon:Icon(Icons.favorite_border,color: Colors.black,), onPressed: null,)
+                    ],
+                  ),
+                  
+                ],
+              ),
+            ),
+            );
+          }),
+            ),
+          ],
+        )),
       floatingActionButton: Stack(
         children: <Widget>[
           FloatingActionButton(
